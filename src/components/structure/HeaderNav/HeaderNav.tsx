@@ -15,15 +15,26 @@ const HeaderNav = () => {
   return (
         <>
         <AppBar color='inherit' position='fixed' className='h-28'>
-          <Container className='pt-6 absolute min-w-full'>
+          <Container className='pl-7 pt-6 absolute min-w-full'>
             <IconUff styles='absolute'/>
               <Toolbar className='justify-end'>
-                <a className='font-bold relative right-28 text-blue-700 no-underline cursor-pointer hover:text-black' 
+                <a className='pl-5 font-bold relative right-28 text-blue-700 no-underline cursor-pointer hover:text-black' 
                   onClick={() => handleClick('/forms/anuncio')}
                 >
                   {t('criar.anuncio')}
                 </a>
 
+                <a className='pl-7 font-bold relative right-28 text-blue-700 no-underline cursor-pointer hover:text-black' 
+                  onClick={() => handleClick('/anuncios')}
+                >
+                  {t('anuncios')}
+                </a>
+
+                <a className='pl-7 font-bold relative right-28 text-blue-700 no-underline cursor-pointer hover:text-black' 
+                  onClick={() => handleClick('/')}
+                >
+                  {t('logout')}
+                </a>
               </Toolbar>
           </Container>
         </AppBar>

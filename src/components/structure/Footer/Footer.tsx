@@ -1,4 +1,3 @@
-import { useTranslation } from "react-i18next";
 import IconUff from "../../icons/icons"; // Certifique-se de que este caminho está correto
 import { Container, Toolbar } from "@mui/material";
 import React from "react";
