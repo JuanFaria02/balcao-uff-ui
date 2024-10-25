@@ -4,7 +4,6 @@ import { Container, Toolbar } from "@mui/material";
 import React from "react";
 
 const Footer = () => {
-    const { t } = useTranslation();
 
     return (
         <div className="static border-t-4">
