@@ -32,8 +32,8 @@ const CreateAnnouncement = () => {
         if (renderPriceField) {
             return (
                 <>
-                <div>
-                    <NumericFormatPrice/>
+                <div className="p-5">
+                    <NumericFormatPrice required label={t('preco')}/>
                 </div>
                 </>
             )
@@ -45,28 +45,31 @@ const CreateAnnouncement = () => {
         <main className='mt-mili'>
             <div className="pt-44 items-center relative flex flex-col">
                 <h1 className="text-blue-800 font-extrabold">
-                    Criação de Anúncio
+                    {t('criacao.anuncio.title')}
                 </h1>
             </div>
             <div className='mb-kilo flex items-center flex-col p-24'>
                 <div className="p-5">
-                    <TextField 
-                        label="Descrição detalhada" 
+                    <TextField
+                        required 
+                        label={t('descricao.detalhada')}
                         color="info" />
                 </div>
 
                 <div className="p-5">
-                    <PhoneNumber/>
+                    <PhoneNumber required label={t('info.contato')}/>
                 </div>
                 <div className="p-5">
                     <TextField
-                        label="Localização"
+                        required
+                        label={t('localizacao')}
                         color="info"
                     />
                 </div>
                 <div className="p-5">
                     <TextField
-                        label="Categoria"
+                        required
+                        label={t('categoria')}
                         color="info"
                     />
                 </div>
@@ -74,6 +77,7 @@ const CreateAnnouncement = () => {
                     <div>
                         {t('busca.item')}
                         <Checkbox 
+                            required
                             id="checkbox-busca"
                             color="info"
                             checked={isBuscaChecked}
@@ -85,6 +89,7 @@ const CreateAnnouncement = () => {
                         {t('oferta.item')}
                         <Checkbox 
                             id="checkbox-oferta"
+                            required
                             color="info"
                             checked={isOfertaChecked}
                             onChange={handleOfertaChange}
@@ -100,7 +105,7 @@ const CreateAnnouncement = () => {
                         variant="contained"
                         color="info" 
                         onClick={createAnnouncement}>
-                            Criar Anúncio
+                            {t('criar.anuncio')}
                     </Button>
                 </div>
             </div>

@@ -1,5 +1,11 @@
 {
     "criar.anuncio": "Criar Anúncio",
+    "criacao.anuncio.title": "Criação de Anúncio",
     "busca.item": "Busca de Item",
-    "oferta.item": "Oferta de Item"
+    "oferta.item": "Oferta de Item",
+    "descricao.detalhada": "Descrição detalhada",
+    "info.contato": "Informações de contato",
+    "localizacao": "Localização",
+    "categoria": "Categoria",
+    "preco": "Preço"
 }
