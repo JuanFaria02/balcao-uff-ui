@@ -4,8 +4,12 @@ export const useCreateAnnouncement = () => {
     const { t } = useTranslation()
   
     // TODO callback para post
+    const createAnnouncement = () => {
+      console.log("Req enviada")
+    } 
     return {
-      t
+      t,
+      createAnnouncement
     }
   }
   
