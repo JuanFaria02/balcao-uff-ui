@@ -7,5 +7,9 @@
     "info.contato": "Informações de contato",
     "localizacao": "Localização",
     "categoria": "Categoria",
-    "preco": "Preço"
+    "preco": "Preço",
+    "login": "Login",
+    "email": "Email",
+    "senha": "Senha",
+    "register": "Sing up"
 }
