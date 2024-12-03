@@ -1,8 +1,10 @@
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../../router/Auth/auth';
 
 interface FormData {
   email: string;
-  senha: string;
+  password: string;
 }
 
 interface UseLoginReturn {
@@ -12,9 +14,11 @@ interface UseLoginReturn {
 
 export const useLogin = (formData: FormData): UseLoginReturn => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleLogin = async () => {
-    if (formData.email && formData.senha) {
+    if (formData.email && formData.password) {
       fetch('http://localhost:8080/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -29,6 +33,8 @@ export const useLogin = (formData: FormData): UseLoginReturn => {
         .then((data) => {
           console.log('Login successful:', data);
           localStorage.setItem("token", data.token)
+          login()
+          navigate("/forms/anuncio")
         })
         .catch((error) => {
           console.error('Error:', error);

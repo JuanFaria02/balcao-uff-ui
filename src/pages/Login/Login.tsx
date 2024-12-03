@@ -5,11 +5,11 @@ import { useLogin } from './hooks/use-login';
 
 interface FormData {
   email: string;
-  senha: string;
+  password: string;
 }
 
 const Login: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({ email: '', senha: '' });
+  const [formData, setFormData] = useState<FormData>({ email: '', password: '' });
   const { t, handleLogin } = useLogin(formData);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -38,8 +38,8 @@ const Login: React.FC = () => {
           <TextField
             required
             label={t('senha')}
-            name="senha"
-            value={formData.senha}
+            name="password"
+            value={formData.password}
             onChange={handleChange}
             color="info"
             type="password"
