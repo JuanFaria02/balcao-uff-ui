@@ -13,9 +13,11 @@ const HeaderNav: React.FC = () => {
   const handleClick = (path: string) => navigate(path);
 
   const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/")
     logout();
-    navigate('/');
   };
+  
 
   const renderOptions = () => {
     if (logged) {
