@@ -1,16 +1,15 @@
 import { Outlet } from "react-router-dom"
-import { Container } from "./styled"
 import React from "react"
 import { HeaderNav } from "../../../components/structure/HeaderNav"
 import Footer from "../../../components/structure/Footer/Footer"
 
 export const Layout = React.memo(() => {
     return (
-        <Container>
+        <div className="h-full">
             <HeaderNav/>
              <Outlet/>
             <Footer/>
-        </Container>  
+        </div>  
     )
 }
 )
