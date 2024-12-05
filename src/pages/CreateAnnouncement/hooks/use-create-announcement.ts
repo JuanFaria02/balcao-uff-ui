@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next"
 import { useNavigate } from "react-router-dom";
 
@@ -17,6 +18,7 @@ export const useCreateAnnouncement = (formData: FormData) => {
     const navigate = useNavigate()
   
     const token = localStorage.getItem('token') ?? ''
+    const [error, setError] = useState(null)
 
     const createAnnouncement = async () => {
         fetch('http://localhost:8080/api/anuncio/criar', {
@@ -36,12 +38,14 @@ export const useCreateAnnouncement = (formData: FormData) => {
           })
           .catch((error) => {
             console.error('Error:', error);
+            setError(error)
           });
     }
   
     return {
       t,
-      createAnnouncement
+      createAnnouncement,
+      error
     }
   }
   

@@ -1,6 +1,6 @@
 import { Button, Checkbox, TextField } from "@mui/material"
 import { useCreateAnnouncement } from "./hooks/use-create-announcement"
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { NumericFormatPrice, PhoneNumber } from "../../components/utils";
 
 interface FormData {
@@ -25,11 +25,26 @@ const CreateAnnouncement = () => {
         price: ''
     });
 
-    const { t, createAnnouncement } = useCreateAnnouncement(formData)
+    const { t, createAnnouncement, error } = useCreateAnnouncement(formData)
 
     const [isBuscaChecked, setIsBuscaChecked] = useState(formData.buscaItem);
     const [isOfertaChecked, setIsOfertaChecked] = useState(formData.ofertaItem);
     const [renderPriceField, setRenderPriceField] = useState(false);
+    const [renderErrorMessage, setRenderErrorMessage] = useState<JSX.Element | null>(null);
+
+
+    useEffect(() => {
+        if (error !== null) {
+            const errorMessage = () => {
+                return (
+                    <>
+                    <p className="text-red-600">Ocorreu um erro ao salvar o anúncio</p>
+                    </>
+                )
+            }
+            setRenderErrorMessage(errorMessage)
+        }
+    }, [error])
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -80,7 +95,8 @@ const CreateAnnouncement = () => {
                 </h1>
             </div>
             <div className='mb-kilo flex items-center flex-col p-24'>
-            <div className="p-5">
+                {renderErrorMessage}
+                <div className="p-5">
                     <TextField
                         required 
                         label={t('title')}
