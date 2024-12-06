@@ -155,7 +155,6 @@ const CreateAnnouncement = () => {
                         {t('busca.item')}
                         <Checkbox 
                             name="buscaItem"
-                            value={formData.buscaItem}
                             required
                             id="checkbox-busca"
                             color="info"
@@ -168,7 +167,6 @@ const CreateAnnouncement = () => {
                         {t('oferta.item')}
                         <Checkbox 
                             name="ofertaItem"
-                            value={formData.ofertaItem}
                             id="checkbox-oferta"
                             required
                             color="info"

@@ -36,7 +36,7 @@ export const useCreateAnnouncement = (formData: FormData) => {
           })
           .then((data) => {
             console.log('Created announcement:', data);
-            navigate("/anuncio/" + data.id)
+            navigate("/anuncios")
           })
           .catch((error) => {
             console.error('Error:', error);
