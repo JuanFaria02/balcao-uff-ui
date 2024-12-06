@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next"
 import { useNavigate } from "react-router-dom";
+import { AnnouncementType, User } from "../../../types";
 
 interface FormData {
   title: string;
@@ -8,10 +9,11 @@ interface FormData {
   phone: string;
   location: string;
   category: string;
-  buscaItem: boolean
-  ofertaItem: boolean
+  type: AnnouncementType | null
   price?: string
+  user: User
 }
+
 
 export const useCreateAnnouncement = (formData: FormData) => {
     const { t } = useTranslation()

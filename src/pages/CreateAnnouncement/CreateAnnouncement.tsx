@@ -2,6 +2,7 @@ import { Button, Checkbox, TextField } from "@mui/material"
 import { useCreateAnnouncement } from "./hooks/use-create-announcement"
 import { ChangeEvent, useEffect, useState } from "react";
 import { NumericFormatPrice, PhoneNumber } from "../../components/utils";
+import { AnnouncementType, User, UserType } from "../../types";
 
 interface FormData {
     title: string
@@ -9,26 +10,37 @@ interface FormData {
     phone: string;
     location: string;
     category: string;
-    buscaItem: boolean
-    ofertaItem: boolean
+    type: AnnouncementType | null
     price?: string
+    user: User
   }
+
 const CreateAnnouncement = () => {
+    const userTypeKey = localStorage.getItem('userType');
+    console.log(UserType[userTypeKey as keyof typeof UserType])
+    const user = {
+       id: Number(localStorage.getItem('id')),
+       email: localStorage.getItem('email'),
+       phone: localStorage.getItem('phone'),
+       userType: UserType[userTypeKey as keyof typeof UserType],
+       active: true
+    }
+   
     const [formData, setFormData] = useState<FormData>({
         title:'',
         description:'',
         phone:'',
         location: '',
         category: '',
-        buscaItem: false,
-        ofertaItem: false,
-        price: ''
+        type: null,
+        price: '',
+        user: user
     });
 
     const { t, createAnnouncement, error } = useCreateAnnouncement(formData)
 
-    const [isBuscaChecked, setIsBuscaChecked] = useState(formData.buscaItem);
-    const [isOfertaChecked, setIsOfertaChecked] = useState(formData.ofertaItem);
+    const [isBuscaChecked, setIsBuscaChecked] = useState(false);
+    const [isOfertaChecked, setIsOfertaChecked] = useState(false);
     const [renderPriceField, setRenderPriceField] = useState(false);
     const [renderErrorMessage, setRenderErrorMessage] = useState<JSX.Element | null>(null);
 
@@ -54,21 +66,21 @@ const CreateAnnouncement = () => {
 
     const handleBuscaChange = () => {
       setIsBuscaChecked(true)
-      setFormData((prev) => ({...prev, ['buscaItem']: true}))
+      setFormData((prev) => ({...prev, ['type']: AnnouncementType.BUSCA}))
       setRenderPriceField(false)
       if (isBuscaChecked) {
-        setFormData((prev) => ({...prev, ['buscaItem']: false}))
+        setFormData((prev) => ({...prev, ['type']: null}))
         setIsBuscaChecked(false); 
       }
     };
   
     const handleOfertaChange = () => {
       setIsOfertaChecked(true)
-      setFormData((prev) => ({...prev, ['ofertaItem']: true}))
+      setFormData((prev) => ({...prev, ['type']: AnnouncementType.OFERTA}))
       setRenderPriceField(true)
       if (isOfertaChecked) {
         setIsOfertaChecked(false); 
-        setFormData((prev) => ({...prev, ['ofertaItem']: false}))
+        setFormData((prev) => ({...prev, ['type']: null}))
         setRenderPriceField(false)
 
       }
