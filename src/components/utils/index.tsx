@@ -1,28 +1,32 @@
 import { NumericFormat, PatternFormat } from "react-number-format"
 import TextField from '@mui/material/TextField'
+import { ChangeEvent } from "react";
 
 interface NumericFormatPriceProps {
     value?: string | number,
     label?: string,
-    required?: boolean
+    required?: boolean,
+    handleChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 interface PhoneFormatPriceProps {
     value?: string | number,
     label?: string,
-    required?: boolean
+    required?: boolean,
+    handleChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 
 
-export const NumericFormatPrice = ({ value, label, required }: NumericFormatPriceProps):JSX.Element => {
+export const NumericFormatPrice = ({ handleChange, value, label, required }: NumericFormatPriceProps):JSX.Element => {
     return (
         <NumericFormat 
             value={value}
             label={label}
-            thousandSeparator="."
-            decimalSeparator=","
-            prefix="R$ " 
+            name='price'
+            thousandSeparator=","
+            decimalSeparator="."
+            onChange={handleChange}
             customInput={TextField}
             placeholder="R$ 25,00"
             decimalScale={2}
@@ -34,13 +38,15 @@ export const NumericFormatPrice = ({ value, label, required }: NumericFormatPric
     );
 };
 
-export const PhoneNumber = ({label, value, required}: PhoneFormatPriceProps) => {
+export const PhoneNumber = ({label, value, required, handleChange}: PhoneFormatPriceProps) => {
     return (
         <PatternFormat
             customInput={TextField} 
             value={value}
             format="(##) ####-####"
             label={label}
+            onChange={handleChange}
+            name="phone"
             color="info"
             required={required}
         />

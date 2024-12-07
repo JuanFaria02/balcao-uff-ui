@@ -33,6 +33,12 @@ export const useLogin = (formData: FormData): UseLoginReturn => {
         .then((data) => {
           console.log('Login successful:', data);
           localStorage.setItem("token", data.token)
+          localStorage.setItem("id", data.userDto.id)
+          localStorage.setItem("email", data.userDto.email)
+          localStorage.setItem("phone", data.userDto.phone)
+          localStorage.setItem("userType", data.userDto.userType)
+          localStorage.setItem("active", data.userDto.active)
+
           login()
           navigate("/forms/anuncio")
         })

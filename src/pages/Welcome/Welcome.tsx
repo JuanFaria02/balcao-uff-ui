@@ -10,7 +10,7 @@ const Welcome = () => {
   
   
     return (
-        <div className="relative top-10">
+        <div className="pt-[200px] h-[700px]">
             <h1 className="font-bold text-blue-700">Bem-vindos ao sistema de anúncios da UFF</h1>
             <div className="justify-self-center relative top-10">
                 <button 
