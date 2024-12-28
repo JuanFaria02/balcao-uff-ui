@@ -5,6 +5,7 @@ import { CreateAnnouncement } from "../pages/CreateAnnouncement";
 import { Login } from "../pages/Login";
 import ProtectedRoute from "./components/ProtectedRouter/ProtectedRoute";
 import Welcome from "../pages/Welcome/Welcome";
+import { Announcements } from "../pages/Announcements";
 
 const Router = () => (
   <BrowserRouter>
@@ -37,7 +38,7 @@ const Router = () => (
           element={
             <ProtectedRoute>
               <BodyWrapper>
-                {/* Busca de anúncios */}
+                <Announcements/>
               </BodyWrapper>
             </ProtectedRoute>
           }

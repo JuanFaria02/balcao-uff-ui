@@ -22,3 +22,14 @@ export enum AnnouncementType {
   OFERTA = 'OFERTA',
   BUSCA = 'BUSCA'
 }
+
+export type Announcement = {
+  title: string;
+  description: string;
+  phone: string;
+  location: string;
+  category: string;
+  type: AnnouncementType;
+  price?: string;
+  user: { name: string };
+};

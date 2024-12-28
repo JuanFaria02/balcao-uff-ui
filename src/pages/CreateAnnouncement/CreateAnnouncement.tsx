@@ -17,7 +17,6 @@ interface FormData {
 
 const CreateAnnouncement = () => {
     const userTypeKey = localStorage.getItem('userType');
-    console.log(UserType[userTypeKey as keyof typeof UserType])
     const user = {
        id: Number(localStorage.getItem('id')),
        email: localStorage.getItem('email'),
