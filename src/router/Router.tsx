@@ -5,7 +5,7 @@ import { CreateAnnouncement } from "../pages/CreateAnnouncement";
 import { Login } from "../pages/Login";
 import ProtectedRoute from "./components/ProtectedRouter/ProtectedRoute";
 import Welcome from "../pages/Welcome/Welcome";
-import { Announcements } from "../pages/Announcements";
+import {AnnouncementDetail, Announcements} from "../pages/Announcements";
 
 const Router = () => (
   <BrowserRouter>
@@ -57,6 +57,19 @@ const Router = () => (
           }
         />
       </Route>
+
+        <Route element={<Layout />} path="/anuncio/:id">
+            <Route
+                index
+                element={
+                    <ProtectedRoute>
+                        <BodyWrapper>
+                            <AnnouncementDetail/>
+                        </BodyWrapper>
+                    </ProtectedRoute>
+                }
+            />
+        </Route>
     </Routes>
   </BrowserRouter>
 );

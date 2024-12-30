@@ -24,6 +24,7 @@ export enum AnnouncementType {
 }
 
 export type Announcement = {
+  id: number | null
   title: string;
   description: string;
   phone: string;
