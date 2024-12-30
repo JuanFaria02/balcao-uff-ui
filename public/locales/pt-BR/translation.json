@@ -14,5 +14,9 @@
     "register": "Sing up",
     "logout": "Logout",
     "anuncios": "Anúncios",
-    "title": "Título"
+    "title": "Título",
+    "perfil.title": "Perfil",
+    "ativo": "Ativo",
+    "salvar.alteracoes": "Salvar Alterações",
+    "usuario.atualizado.sucesso": "Usuário atualizado com sucesso"
 }
