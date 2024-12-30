@@ -4,6 +4,7 @@ export type CustomIcon = {
 
 export type User = {
   id: number | null,
+  name: string | null,
   email?: string | null,
   phone?: string | null,
   userType?: UserType | null,

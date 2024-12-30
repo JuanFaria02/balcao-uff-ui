@@ -6,6 +6,7 @@ import { Login } from "../pages/Login";
 import ProtectedRoute from "./components/ProtectedRouter/ProtectedRoute";
 import Welcome from "../pages/Welcome/Welcome";
 import {AnnouncementDetail, Announcements} from "../pages/Announcements";
+import { Perfil } from "../pages/Perfil";
 
 const Router = () => (
   <BrowserRouter>
@@ -70,6 +71,19 @@ const Router = () => (
                 }
             />
         </Route>
+
+        <Route element={<Layout />} path="/perfil">
+        <Route
+          index
+          element={
+            <ProtectedRoute>
+              <BodyWrapper>
+                <Perfil/>
+              </BodyWrapper>
+            </ProtectedRoute>
+          }
+        />
+      </Route>
     </Routes>
   </BrowserRouter>
 );
